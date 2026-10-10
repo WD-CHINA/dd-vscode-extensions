@@ -1,0 +1,10 @@
+{
+  "name": "dd-vscode-extensions",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "compile": "pnpm --filter \"./extensions/*\" --filter \"./packages/*\" run compile",
+    "watch": "pnpm --parallel --filter \"./extensions/*\" --filter \"./packages/*\" run watch",
+    "test": "pnpm --filter \"./extensions/*\" run test"
+  }
+}

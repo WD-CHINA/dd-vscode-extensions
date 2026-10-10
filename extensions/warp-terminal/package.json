@@ -1,0 +1,83 @@
+{
+  "name": "warp-terminal",
+  "displayName": "Warp 终端",
+  "description": "从侧边栏或状态栏，在当前项目根目录打开本机 Warp。",
+  "version": "0.1.0",
+  "publisher": "dd-vscode-extensions",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:warp.sidebar",
+    "onCommand:warp.openActive"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "warp.openActive",
+        "title": "在项目根目录打开",
+        "category": "Warp",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "warp.openHere",
+        "title": "在 Warp 中打开",
+        "category": "Warp",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "warp.revealSidebar",
+        "title": "显示 Warp 面板",
+        "category": "Warp"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "warp.openHere",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation@20"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "warp",
+          "title": "Warp",
+          "icon": "media/warp.svg"
+        }
+      ]
+    },
+    "views": {
+      "warp": [
+        {
+          "type": "webview",
+          "id": "warp.sidebar",
+          "name": "打开项目",
+          "icon": "media/warp.svg",
+          "visibility": "visible"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p tsconfig.build.json",
+    "watch": "tsc -watch -p tsconfig.build.json",
+    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test src/warpUri.test.ts"
+  },
+  "dependencies": {
+    "@dd-vscode-extensions/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "name": "feishu-launcher",
+  "displayName": "飞书",
+  "description": "从侧边栏或状态栏启动本机飞书。",
+  "version": "0.1.0",
+  "publisher": "dd-vscode-extensions",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:feishu.sidebar",
+    "onCommand:feishu.open"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "feishu.open",
+        "title": "打开飞书",
+        "category": "飞书",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "feishu.revealSidebar",
+        "title": "显示飞书面板",
+        "category": "飞书"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "feishu",
+          "title": "飞书",
+          "icon": "media/feishu.svg"
+        }
+      ]
+    },
+    "views": {
+      "feishu": [
+        {
+          "type": "webview",
+          "id": "feishu.sidebar",
+          "name": "启动",
+          "icon": "media/feishu.svg",
+          "visibility": "visible"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p tsconfig.build.json",
+    "watch": "tsc -watch -p tsconfig.build.json",
+    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test src/feishuApp.test.ts"
+  },
+  "dependencies": {
+    "@dd-vscode-extensions/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.8.3"
+  }
+}
