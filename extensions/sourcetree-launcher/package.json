@@ -1,8 +1,8 @@
 {
   "name": "sourcetree-launcher",
   "displayName": "SourceTree",
-  "description": "从侧边栏或状态栏打开本机 SourceTree，并加载当前 Git 仓库。",
-  "version": "0.1.0",
+  "description": "从状态栏打开本机 SourceTree，并加载当前 Git 仓库。",
+  "version": "0.1.1",
   "publisher": "dd-vscode-extensions",
   "license": "MIT",
   "engines": {
@@ -13,7 +13,6 @@
   ],
   "activationEvents": [
     "onStartupFinished",
-    "onView:sourcetree.sidebar",
     "onCommand:sourcetree.open"
   ],
   "main": "./out/extension.js",
@@ -24,47 +23,8 @@
         "title": "打开当前仓库",
         "category": "SourceTree",
         "icon": "$(source-control)"
-      },
-      {
-        "command": "sourcetree.openHere",
-        "title": "在 SourceTree 中打开",
-        "category": "SourceTree",
-        "icon": "$(source-control)"
-      },
-      {
-        "command": "sourcetree.revealSidebar",
-        "title": "显示 SourceTree 面板",
-        "category": "SourceTree"
       }
-    ],
-    "menus": {
-      "explorer/context": [
-        {
-          "command": "sourcetree.openHere",
-          "group": "navigation@21"
-        }
-      ]
-    },
-    "viewsContainers": {
-      "activitybar": [
-        {
-          "id": "sourcetree",
-          "title": "SourceTree",
-          "icon": "media/sourcetree.svg"
-        }
-      ]
-    },
-    "views": {
-      "sourcetree": [
-        {
-          "type": "webview",
-          "id": "sourcetree.sidebar",
-          "name": "打开仓库",
-          "icon": "media/sourcetree.svg",
-          "visibility": "visible"
-        }
-      ]
-    }
+    ]
   },
   "scripts": {
     "compile": "tsc -p tsconfig.build.json",

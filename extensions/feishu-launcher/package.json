@@ -1,8 +1,8 @@
 {
   "name": "feishu-launcher",
   "displayName": "飞书",
-  "description": "从侧边栏或状态栏启动本机飞书。",
-  "version": "0.1.0",
+  "description": "从状态栏启动本机飞书。",
+  "version": "0.1.1",
   "publisher": "dd-vscode-extensions",
   "license": "MIT",
   "engines": {
@@ -13,7 +13,6 @@
   ],
   "activationEvents": [
     "onStartupFinished",
-    "onView:feishu.sidebar",
     "onCommand:feishu.open"
   ],
   "main": "./out/extension.js",
@@ -24,33 +23,8 @@
         "title": "打开飞书",
         "category": "飞书",
         "icon": "$(comment-discussion)"
-      },
-      {
-        "command": "feishu.revealSidebar",
-        "title": "显示飞书面板",
-        "category": "飞书"
       }
-    ],
-    "viewsContainers": {
-      "activitybar": [
-        {
-          "id": "feishu",
-          "title": "飞书",
-          "icon": "media/feishu.svg"
-        }
-      ]
-    },
-    "views": {
-      "feishu": [
-        {
-          "type": "webview",
-          "id": "feishu.sidebar",
-          "name": "启动",
-          "icon": "media/feishu.svg",
-          "visibility": "visible"
-        }
-      ]
-    }
+    ]
   },
   "scripts": {
     "compile": "tsc -p tsconfig.build.json",

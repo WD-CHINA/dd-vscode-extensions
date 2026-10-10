@@ -5,14 +5,13 @@
 ## 改代码时
 
 - 界面、错误提示、`displayName`、`description` 和扩展 README 使用简体中文。
-- 不注册快捷键。用活动栏、状态栏，需要时再加上资源管理器右键。
+- 不注册快捷键。只用状态栏，不注册活动栏、侧边栏页面或资源管理器右键。
 - 唤起应用使用 `execFile(...).unref()`。不要嵌入外部应用，也不要留下常驻子进程。
 - 只支持 macOS。其他平台和远程窗口直接报错。
 - 应用路径放在 `/Applications` 的候选列表里，取第一个存在的路径。
 - `publisher` 固定为 `dd-vscode-extensions`。命令和视图 id 用扩展前缀，例如 `feishu.open`、`feishu.sidebar`。
-- 活动栏容器和 webview 视图都要写 `icon`，图标是 `media/*.svg`，单色 `fill="#000"`。
-- webview 使用 `retainContextWhenHidden: true`。内容安全策略为 `default-src 'none'`，脚本带一次性 `nonce`。
-- `extension.ts` 只做命令、界面和唤起。路径解析、Git 根目录这类逻辑放到可单测的模块，该模块不要 import `vscode`。
+- 状态栏项放在左侧，点击执行主命令。不要创建 webview。
+- `extension.ts` 只做命令、状态栏和唤起。路径解析、Git 根目录这类逻辑放到可单测的模块，该模块不要 import `vscode`。
 
 ## TypeScript
 
